@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Produtos</title>
+</head>
+<body>
+<h1>Produtos Cadastrados</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Preço de Compra</th>
+        <th>Preço de Venda</th>
+        <th>Data de Criação</th>
+    </tr>
+    {% for produto in regs %}
+    <tr>
+        <td>{{ produto[0] }}</td>
+        <td>{{ produto[1] }}</td>
+        <td>{{ produto[2] }}</td>
+        <td>{{ produto[3] }}</td>
+        <td>{{ produto[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
