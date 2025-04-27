@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Lista de Produtos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Produtos</title>
 </head>
 <body>
-<h1>Produtos Cadastrados</h1>
+    <h1>Lista de Produtos</h1>
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Descrição</th>
-        <th>Preço de Compra</th>
-        <th>Preço de Venda</th>
-        <th>Data de Criação</th>
-    </tr>
-    {% for produto in regs %}
-    <tr>
-        <td>{{ produto[0] }}</td>
-        <td>{{ produto[1] }}</td>
-        <td>{{ produto[2] }}</td>
-        <td>{{ produto[3] }}</td>
-        <td>{{ produto[4] }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Preço de Compra</th>
+            <th>Preço de Venda</th>
+            <th>Ações</th>
+        </tr>
+        {% for produto in regs %}
+            <tr>
+                <td>{{ produto[0] }}</td>
+                <td>{{ produto[1] }}</td>
+                <td>{{ produto[2] }}</td>
+                <td>{{ produto[3] }}</td>
+                <td>
+                    <a href="{{ url_for('editar', idproduto=produto[0]) }}">Editar</a> |
+                    <a href="{{ url_for('deletar', idproduto=produto[0]) }}" onclick="return confirm('Tem certeza que deseja excluir?')">Deletar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ url_for('cadastrar') }}">Cadastrar novo produto</a>
 </body>
 </html>
